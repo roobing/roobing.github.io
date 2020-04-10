@@ -28,7 +28,7 @@
 <meta property="og:description" content="Part1: Expressions, Variables and ConstantsArithmetic Operation(산술 연산자) +, -, *, &#x2F;  표현식 주의점 : 연산자의 양쪽에 공백이 아예 없거나 둘다 있어야 한다. Ex) 1+1 or 1 + 1  표현식에 integer만을 사용한다면, 그 결과 또한 integer다 Ex) 22&#x2F;7 -&gt; 3">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-04-09T05:06:00.000Z">
-<meta property="article:modified_time" content="2020-04-09T06:28:08.291Z">
+<meta property="article:modified_time" content="2020-04-10T04:04:21.664Z">
 <meta property="article:author" content="Woobin Cheon">
 <meta name="twitter:card" content="summary">
 
@@ -172,10 +172,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-04-09 14:06:00 / Modified: 15:28:08" itemprop="dateCreated datePublished" datetime="2020-04-09T14:06:00+09:00">2020-04-09</time>
+              <time title="Created: 2020-04-09 14:06:00" itemprop="dateCreated datePublished" datetime="2020-04-09T14:06:00+09:00">2020-04-09</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-10 13:04:21" itemprop="dateModified" datetime="2020-04-10T13:04:21+09:00">2020-04-10</time>
+              </span>
 
           
 
@@ -280,11 +286,11 @@
 <h3 id="Interpolation"><a href="#Interpolation" class="headerlink" title="Interpolation"></a>Interpolation</h3><ul>
 <li><p>string안에 string을 포함한 여러가지 데이터타입을 빌드할 수 있다(?). swift 고유.</p>
 <p>ex 1)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let name &#x3D; &quot;woobin&quot;</span><br><span class="line">let messageInOne &#x3D; &quot;Hi my name is \(name)!&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="string">"woobin"</span></span><br><span class="line"><span class="keyword">let</span> messageInOne = <span class="string">"Hi my name is \(name)!"</span></span><br></pre></td></tr></table></figure>
 
 <p>코드 결과:  “Hi my name is woobin!”</p>
 <p>ex 2)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let oneThird &#x3D; 1.0 &#x2F; 3.0</span><br><span class="line">let ontThirdLongString &#x3D; &quot;One third is \(oneThird) as a decimal.&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> oneThird = <span class="number">1.0</span> / <span class="number">3.0</span></span><br><span class="line"><span class="keyword">let</span> ontThirdLongString = <span class="string">"One third is \(oneThird) as a decimal."</span></span><br></pre></td></tr></table></figure>
 
 <p>코드 결과: One third is 0.3333333333333333 as a decimal.  <em style="font-weight: 700;">소수점의 길이를 직접 결정할 수 는 없다.</em></p>
 </li>
@@ -293,7 +299,57 @@
 <li>스트링 변수를 여러줄로 초기화 할 수 있다.</li>
 <li>줄바꿈 앞에 반드시 2칸의 공백이 포함되어야한다.(swift가 “”” 앞의 2칸 공백을 보고 끝남을 인지)</li>
 </ul>
-<h3 id="Tuples"><a href="#Tuples" class="headerlink" title="Tuples"></a>Tuples</h3>
+<h3 id="Tuples"><a href="#Tuples" class="headerlink" title="Tuples"></a>Tuples</h3><ul>
+<li><p>하나의 변수명으로 여러개의 값을 정의할 수 있다.</p>
+<p>ex) let cordination3D: (Int, Int) = (1, 2)</p>
+</li>
+<li><p>타입 추론 또한 가능하며, 일반적인 변수 선언과 마찬가리 다양한 방법으로 선언 가능하다.</p>
+</li>
+<li><p>첫번째 요소는 <strong>0번째</strong>로 index한다.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> cordination: (<span class="type">Int</span>, <span class="type">Int</span>) = (<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"><span class="keyword">let</span> x = cordination.<span class="number">0</span></span><br><span class="line"><span class="keyword">let</span> y = cordination.<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>but, 개발자가 직접 indexing할 수 도 있다.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> cordination: (<span class="type">Int</span>, <span class="type">Int</span>) = (x: <span class="number">2</span>, y: <span class="number">3</span>, z: <span class="number">3</span>)</span><br><span class="line"><span class="comment">//변수에 할당 하는 방법1</span></span><br><span class="line"><span class="keyword">let</span> (x1, y1, z1) = cordination</span><br><span class="line"><span class="comment">//변수에 할당 하는 방법2</span></span><br><span class="line"><span class="keyword">let</span> x2 = cordination.x</span><br><span class="line"><span class="keyword">let</span> y2 = cordination.y</span><br><span class="line"><span class="keyword">let</span> z2 = cordination.z</span><br><span class="line"><span class="comment">//변수에 할당 하는 방법3</span></span><br><span class="line"><span class="keyword">let</span> (x3, y3, <span class="number">_</span>) = cordination <span class="comment">// cordination의 3번째 변수는 무시된다.</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="A-whole-lot-of-number-types-각-데이터-타입의-표현-가능한-숫자-범위"><a href="#A-whole-lot-of-number-types-각-데이터-타입의-표현-가능한-숫자-범위" class="headerlink" title="A whole lot of number types(각 데이터 타입의 표현 가능한 숫자 범위)"></a>A whole lot of number types(각 데이터 타입의 표현 가능한 숫자 범위)</h3><ul>
+<li><p>signed: Int8, Int16, Int32, Int64</p>
+</li>
+<li><p>unsigned: UInt8, UInt16, UInt32, UInt64</p>
+</li>
+<li><p>fractional: double, float(float는 double의 절반의 크기)</p>
+<table>
+<thead>
+<tr>
+<th>type</th>
+<th>precision</th>
+<th>Stroage size</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>double</td>
+<td>6 digits</td>
+<td>4</td>
+</tr>
+<tr>
+<td>float</td>
+<td>15 digits</td>
+<td>8</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="A-peek-behind-the-curtains-protocol"><a href="#A-peek-behind-the-curtains-protocol" class="headerlink" title="A peek behind the curtains: protocol"></a>A peek behind the curtains: protocol</h3><ul>
+<li>swift는 protocol에 기반한 첫 언어다. 이 protocol을 이해한다면 다른 언어들과는 다른방식으로 시스템을 leveraging할 수 있다.</li>
+</ul>
+<h2 id="Flow-Control"><a href="#Flow-Control" class="headerlink" title="Flow Control"></a>Flow Control</h2><ul>
+<li>다양한 상황에서 컴퓨터가 어떤 식으로 동작할지에 대해 서술하는 것</li>
+</ul>
+<h3 id="비교연산"><a href="#비교연산" class="headerlink" title="비교연산"></a>비교연산</h3><ul>
+<li>값을 비교하는 비교연산의 결과로 Bool type(true, false) 사용됨</li>
+</ul>
+<h3 id="Boolean-logic"><a href="#Boolean-logic" class="headerlink" title="Boolean logic"></a>Boolean logic</h3>
     </div>
 
     
@@ -373,7 +429,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Part1-Expressions-Variables-and-Constants"><span class="nav-number">1.</span> <span class="nav-text">Part1: Expressions, Variables and Constants</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Arithmetic-Operation-산술-연산자"><span class="nav-number">1.1.</span> <span class="nav-text">Arithmetic Operation(산술 연산자)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shift-operation"><span class="nav-number">1.2.</span> <span class="nav-text">shift operation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#연산-우선순위"><span class="nav-number">1.3.</span> <span class="nav-text">연산 우선순위</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#수학-함수-Math-functions"><span class="nav-number">1.4.</span> <span class="nav-text">수학 함수(Math functions)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Naming-data"><span class="nav-number">1.5.</span> <span class="nav-text">Naming data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Increment-and-Decrement"><span class="nav-number">1.6.</span> <span class="nav-text">Increment and Decrement</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Part2-types-and-operation"><span class="nav-number">2.</span> <span class="nav-text">Part2: types and operation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#시작"><span class="nav-number">2.1.</span> <span class="nav-text">시작</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#다른-타입끼리의-연산"><span class="nav-number">2.2.</span> <span class="nav-text">다른 타입끼리의 연산</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#타입추론"><span class="nav-number">2.3.</span> <span class="nav-text">타입추론</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#문자열"><span class="nav-number">2.4.</span> <span class="nav-text">문자열</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Concatenation-연속성"><span class="nav-number">2.5.</span> <span class="nav-text">Concatenation(연속성?)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Interpolation"><span class="nav-number">2.6.</span> <span class="nav-text">Interpolation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multi-line-Strings"><span class="nav-number">2.7.</span> <span class="nav-text">Multi-line Strings</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tuples"><span class="nav-number">2.8.</span> <span class="nav-text">Tuples</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Part1-Expressions-Variables-and-Constants"><span class="nav-number">1.</span> <span class="nav-text">Part1: Expressions, Variables and Constants</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Arithmetic-Operation-산술-연산자"><span class="nav-number">1.1.</span> <span class="nav-text">Arithmetic Operation(산술 연산자)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shift-operation"><span class="nav-number">1.2.</span> <span class="nav-text">shift operation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#연산-우선순위"><span class="nav-number">1.3.</span> <span class="nav-text">연산 우선순위</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#수학-함수-Math-functions"><span class="nav-number">1.4.</span> <span class="nav-text">수학 함수(Math functions)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Naming-data"><span class="nav-number">1.5.</span> <span class="nav-text">Naming data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Increment-and-Decrement"><span class="nav-number">1.6.</span> <span class="nav-text">Increment and Decrement</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Part2-types-and-operation"><span class="nav-number">2.</span> <span class="nav-text">Part2: types and operation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#시작"><span class="nav-number">2.1.</span> <span class="nav-text">시작</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#다른-타입끼리의-연산"><span class="nav-number">2.2.</span> <span class="nav-text">다른 타입끼리의 연산</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#타입추론"><span class="nav-number">2.3.</span> <span class="nav-text">타입추론</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#문자열"><span class="nav-number">2.4.</span> <span class="nav-text">문자열</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Concatenation-연속성"><span class="nav-number">2.5.</span> <span class="nav-text">Concatenation(연속성?)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Interpolation"><span class="nav-number">2.6.</span> <span class="nav-text">Interpolation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multi-line-Strings"><span class="nav-number">2.7.</span> <span class="nav-text">Multi-line Strings</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tuples"><span class="nav-number">2.8.</span> <span class="nav-text">Tuples</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A-whole-lot-of-number-types-각-데이터-타입의-표현-가능한-숫자-범위"><span class="nav-number">2.9.</span> <span class="nav-text">A whole lot of number types(각 데이터 타입의 표현 가능한 숫자 범위)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A-peek-behind-the-curtains-protocol"><span class="nav-number">2.10.</span> <span class="nav-text">A peek behind the curtains: protocol</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flow-Control"><span class="nav-number">3.</span> <span class="nav-text">Flow Control</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#비교연산"><span class="nav-number">3.1.</span> <span class="nav-text">비교연산</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Boolean-logic"><span class="nav-number">3.2.</span> <span class="nav-text">Boolean logic</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -387,7 +443,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
